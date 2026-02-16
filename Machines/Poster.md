@@ -74,7 +74,7 @@ Con acceso de superusuario a la base de datos, se utilizó el módulo de Metaspl
 
 Se estableció una conexión SSH utilizando las credenciales del usuario `dark`.
 
-Bash
+
 
 ```
 ssh dark@10.67.138.72
@@ -99,7 +99,7 @@ Dada la alta probabilidad de reutilización de contraseñas, se probó esta clav
 
 Tras obtener acceso como `alison`, se verificaron sus privilegios de `sudo`:
 
-Bash
+
 
 ```
 alison@ubuntu:~$ sudo -l
@@ -109,7 +109,6 @@ User alison may run the following commands on ubuntu:
 
 Al tener permisos totales, se procedió a elevar privilegios a root:
 
-Bash
 
 ```
 sudo su -
