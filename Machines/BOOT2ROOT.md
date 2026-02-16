@@ -1,6 +1,6 @@
  [Watcher]
 
- 1. Reconocimiento e Infección Inicial
+ 1. Reconocimiento
 
 Escaneo de Puertos (Nmap)
 
