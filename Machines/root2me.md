@@ -4,11 +4,8 @@ Markdown
 **Plataforma**: TryHackMe  
 **Dificultad**: Easy  
 **OS**: Linux  
-**IP objetivo**: 10.64.180.214  
-**Fecha**: Febrero 2026  
-**Autor**: Mauricio
 
-## 🔍 Nmap Scan
+##  Nmap Scan
 **Comando**:
 ```bash
 nmap -Pn -n -sV -sC -O -p- 10.64.180.214
@@ -28,7 +25,7 @@ Puertos abiertos:
 - Puerto 22: OpenSSH 8.2p1 → no explotable directamente
 - Nota: OS detection impreciso por pocos puertos abiertos, pero confirmado Linux por Apache y SSH.
 
-## 🌐 Enumeración Web
+##  Enumeración Web
 
 ### Fuzzing de directorios
 
