@@ -3,7 +3,9 @@
  
 # Write-up: Publisher – TryHackMe
 
-**Dificultad:** Media **Sistema operativo:** Linux (Ubuntu 20.04/22.04, kernel 5.15) **Técnicas clave:** CVE-2023-27372 (SPIP RCE), privesc vía SUID + bypass AppArmor, abuso de script writable.
+**Dificultad:** Media 
+**Sistema operativo:** Linux (Ubuntu 20.04/22.04, kernel 5.15) 
+**Técnicas clave:** CVE-2023-27372 (SPIP RCE), privesc vía SUID + bypass AppArmor, abuso de script writable.
 
 ## 1. Enumeración inicial
 
@@ -71,12 +73,16 @@ set LPORT 4444
 exploit
 ```
 Obtenemos shell como **www-data**.
-![[Pasted image 20260212160947.png]]
+
+<img width="275" height="77" alt="image" src="https://github.com/user-attachments/assets/6a57b6e8-8b1e-4772-8043-1c1f06d0c3e6" />
+
 
 ## 3. Enumeración como www-data
 
 Utilizo linpeas y encuentro un id_rsa procedo conectarme a think `ssh -i id_rsa think@10.64.176.81`
-![[Pasted image 20260212193002.png]]
+
+<img width="349" height="484" alt="image" src="https://github.com/user-attachments/assets/e12dcb1c-0a29-4323-9ba8-b2c5b013314b" />
+
 
 ## 4. Enumeración como think 
 
@@ -92,7 +98,7 @@ Linpeas mostró:
 
 Intenté modificar el script directamente: 
 ```
-```echo ... >> /opt/run_container.sh → **Permission denied** a pesar de los permisos 777
+echo ... >> /opt/run_container.sh → **Permission denied** a pesar de los permisos 777
 ```
 
 ## 6. Detección de AppArmor
@@ -119,7 +125,8 @@ perl -e 'open(F, ">/opt/run_container.sh"); print F "#!/bin/bash\n/bin/bash -ip\
 
 Esto sobreescribió el script con un shell root simple.
 
-![[Pasted image 20260212205649.png]]
+<img width="329" height="205" alt="image" src="https://github.com/user-attachments/assets/d30b2b63-dbc3-4d8b-ae84-98516756c7ab" />
+
 
 
 ## Lecciones aprendidas
