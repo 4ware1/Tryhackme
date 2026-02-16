@@ -73,7 +73,6 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 **Comando (dirb):**
 
-Bash
 
 ```
 dirb http://10.67.145.199 /usr/share/wordlists/dirb/common.txt
@@ -142,7 +141,6 @@ dirb http://10.67.145.199 /usr/share/wordlists/dirb/common.txt
 
 **User Flag:**
 
-Bash
 
 ```
 cat /home/itguy/user.txt
@@ -157,7 +155,6 @@ cat /home/itguy/user.txt
 
 **Sudo -l:**
 
-Bash
 
 ```
 sudo -l
