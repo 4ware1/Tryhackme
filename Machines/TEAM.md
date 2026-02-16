@@ -44,7 +44,9 @@ OS and Service detection performed. Please report any incorrect results at https
 |_http-title: Apache2 Ubuntu Default Page: It works! If you see this add 'te...
 ```
 
-![[Pasted image 20260214145225.png]]
+<img width="645" height="341" alt="image" src="https://github.com/user-attachments/assets/76f2599b-2e61-428b-82de-9cc908f85d4a" />
+
+
 
 
 ###### Gobuster salida
@@ -56,7 +58,8 @@ OS and Service detection performed. Please report any incorrect results at https
 /robots.txt           
 /server-status     
 ```
-![[Pasted image 20260214145351.png]]
+<img width="474" height="139" alt="image" src="https://github.com/user-attachments/assets/9839e25c-dd31-4487-b1d8-fd306537579d" />
+
 ###### wfuzz Subdomains
 ```
 "www"                      
@@ -65,19 +68,26 @@ OS and Service detection performed. Please report any incorrect results at https
 ```
 
 Endpoint con posible lfi
-![[Pasted image 20260214145517.png]]
+
+<img width="506" height="205" alt="image" src="https://github.com/user-attachments/assets/e8edc94d-5a80-4a9d-878d-cb2dcb733435" />
+
 
 Confirmacion de LFI
-![[Pasted image 20260214145551.png]]
 
-Hice otro wfuzz para confirmar que archivos puedo ver en el sistema; este es el mas interesantes
+<img width="624" height="255" alt="image" src="https://github.com/user-attachments/assets/9877f16f-46d9-48c7-a6dd-c71f16114c48" />
+
+
+Hice otro wfuzz para confirmar que archivos puedo ver en el sistema; este fue el mas interesantes
 ```
  "/etc/ssh/sshd_config"     
 ```
 Dentro del archivo se encuentra un id_rsa que le pertence al usuario dale
-![[Pasted image 20260214145812.png]]
+<img width="670" height="449" alt="image" src="https://github.com/user-attachments/assets/cba09617-9cb9-4325-bfed-dd8b7de0bdec" />
+
 Despues de ingresar como dale buscamos la primera flag
-![[Pasted image 20260214150020.png]]
+
+<img width="279" height="56" alt="image" src="https://github.com/user-attachments/assets/aaa5c03b-877f-412d-82dd-b861b3cc5365" />
+
 
 Podemos ver que dale tiene permisos para ejecutar ese script
 ```shell
@@ -86,7 +96,7 @@ sudo -l
 ```
 
 
-Podemos ver que es lo que tiene dentro el script, y podemos observar un problema en la variable "error" nos permite injectar comandos como como el usuario gyale entonces nos lanzamos una shell /bin/bash/ y tenemos accesos yo me mande una revshell directamente para que sea mas interactiva la consola
+Podemos ver que es lo que tiene dentro el script, y podemos observar un problema en la variable "error" nos permite injectar comandos  como el usuario gyale entonces nos lanzamos una shell /bin/bash/ y tenemos accesos yo me mande una revshell directamente para que sea mas interactiva la consola
 ```shell
 dale@ip-10-64-167-152:/home/gyles$ cat /home/gyles/admin_checks
 #!/bin/bash
@@ -116,9 +126,10 @@ gyale pertence al grupo de admin y puede modificar los archivos mencionados, exi
 /opt/admin_stuf
 ```
 
-![[Pasted image 20260214150917.png]]
+<img width="223" height="91" alt="image" src="https://github.com/user-attachments/assets/ea901943-b3d9-45cd-8aa2-fa79645769cc" />
 
 
-###### Aprendizaje
 
-Importante siempre wfuzz para subdominios, es lo que siempr me falta de aplicar en la metodologia para buscar entradas siempre tener en cuenta, y despues el priv escalado fue sencillo, detecte otra forma para escalar en el PATH= estaba mal configurado usr/local/bin/ entonces podia hacer un pathhijacking dentro de esas carpetas todo se ejecutaria como root
+### Aprendizaje
+
+Importante siempre wfuzz para subdominios, es lo que siempr me falta de aplicar en la metodologia para buscar entradas siempre tener en cuenta, y despues el priv escalado fue sencillo, detecte otra forma para escalar en el PATH= estaba mal configurado
