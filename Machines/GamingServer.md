@@ -6,7 +6,6 @@
 
 Comenzamos realizando un escaneo de puertos para identificar servicios disponibles:
 
-bash
 
 ```bash
 nmap -Pn -sV 10.10.159.106
@@ -25,19 +24,21 @@ nmap -Pn -sV 10.10.159.106
 
 Sin credenciales disponibles, enumeramos el servidor web en el puerto 80:
 
-bash
+
 
 ```bash
 gobuster dir -u http://10.10.159.106/ -w /usr/share/wordlists/dirb/common.txt -t 50
 ```
 
-![[Pasted image 20260215233433.png]]
+<img width="484" height="142" alt="image" src="https://github.com/user-attachments/assets/169a5696-063a-4d37-9d04-1a6842821af2" />
+
 
 ### Análisis del Sitio Web
 
 Visitamos el puerto 80 y revisamos el código fuente de la página principal:
 
-![[Pasted image 20260215232332.png]]
+<img width="725" height="67" alt="image" src="https://github.com/user-attachments/assets/710ddff3-0406-440d-819f-15826884c486" />
+
 
 > **Hallazgo:** En el código fuente encontramos un **nombre de usuario**.
 
@@ -49,17 +50,20 @@ Visitamos el puerto 80 y revisamos el código fuente de la página principal:
 
 Contiene un archivo que parece ser una lista de contraseñas (diccionario).
 
-![[Pasted image 20260215233458.png]]
+<img width="391" height="105" alt="image" src="https://github.com/user-attachments/assets/9aa0cefd-6f1b-4b76-b03d-9732b7ae2f92" />
+
 
 **Acción:** Copiamos el contenido en un archivo local llamado `wordlist`
 
-![[Pasted image 20260215233545.png]]
+<img width="243" height="346" alt="image" src="https://github.com/user-attachments/assets/d7bc99d0-25f9-4688-9356-48a367eb03ed" />
+
 
 ### Directorio `/secret`
 
 Encontramos lo que parece ser una **clave SSH cifrada**.
 
-![[Pasted image 20260215233520.png]]
+<img width="472" height="444" alt="image" src="https://github.com/user-attachments/assets/4c152ef6-16e7-46c6-9b45-1b1834243339" />
+
 
 ---
 
@@ -79,7 +83,8 @@ locate ssh2john
 sudo john --wordlist=wordlist.txt clave.hash
 ```
 
-![[Pasted image 20260215234832.png]]
+<img width="267" height="47" alt="image" src="https://github.com/user-attachments/assets/83baadbc-bfab-4343-88f6-bf9d79a74898" />
+
 
 
 ### 4. Ajustar permisos de la clave
@@ -219,7 +224,8 @@ ls
 cat root.txt
 ```
 
-![[Pasted image 20260215234645.png]]
+<img width="335" height="21" alt="image" src="https://github.com/user-attachments/assets/4c928ee9-afa6-4f8f-ad27-abb79f3b1c43" />
+
 
 
 # APRENDIZAJES
@@ -239,7 +245,7 @@ LXD es un gestor de contenedores en Linux. Si un usuario pertenece al grupo `lxd
 
 ---
 
-## Claves SSH Cifradas con OpenSSL
+## Aprendizaje
 
 Una clave SSH puede estar protegida con una contraseña (passphrase). Cuando esto ocurre, necesitas la contraseña cada vez que usas la clave.
 
