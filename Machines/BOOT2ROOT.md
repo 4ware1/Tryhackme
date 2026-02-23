@@ -12,8 +12,6 @@ Escaneo de Puertos (Nmap)
 
     Puerto 80: HTTP (Apache 2.4.41 - Jekyll v4.1.1)
 
-    Espacio para Imagen: [Inserte aquí captura de pantalla del escaneo Nmap]
-
 Enumeración Web y Fuzzing
 
 Al revisar el puerto 80, no se observaron anomalías a simple vista. Se procedió a realizar un fuzzing de directorios con gobuster:
